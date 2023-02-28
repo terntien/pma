@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>{{name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()"> ปิด (x)</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content> 
+  <img alt="" [src]=image /> 
+  <ion-item>
+    <ion-icon name="videocam-outline"></ion-icon>
+    &nbsp; {{name}}
+  </ion-item>
+  <ion-item>
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    &nbsp; {{title}}
+  </ion-item> 
+</ion-content>

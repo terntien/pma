@@ -1,0 +1,7 @@
+{
+  "name": "WaterLevel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

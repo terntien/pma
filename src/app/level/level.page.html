@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ข้อมูลปริมาณน้ำรายวัน</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-searchbar animated="true" placeholder="บ้านค่ายชัยภูมิ"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <ion-item detail="true">
+    <ion-label [routerLink]="['/sitelevel/01']">
+      <h3 style="font-size:18px ;">จุดที่ 1 บ่อพักน้ำดิบ </h3> 
+      <p>บ่อพักน้ำดิบ การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
+    </ion-label>
+  </ion-item>
+  <ion-item detail="true">
+    <ion-label [routerLink]="['/sitelevel/02']">
+      <h3 style="font-size:18px ;">จุดที่ 2 โรงสูบน้ำดิบ </h3> 
+      <p>โรงสูบน้ำดิบ การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
+    </ion-label>
+  </ion-item>
+  <ion-item detail="true">
+    <ion-label [routerLink]="['/sitelevel/03']">
+      <h3 style="font-size:18px ;">จุดที่ 3 บ่อกรอง </h3> 
+      <p>บ่อกรอง การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

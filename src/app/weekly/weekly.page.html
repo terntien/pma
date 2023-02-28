@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ปริมาณน้ำรายสัปดาห์</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>เลือกจุดตรวจวัด</ion-label>
+      <ion-select [(ngModel)]="location" (ionChange)="triggerEvent()" placeholder="เลือกจุดตรวจวัด" okText="ตกลง" cancelText="ยกเลิก">
+        <ion-select-option value="01">จุดที่ 1 บ่อพักน้ำดิบ</ion-select-option>
+        <ion-select-option value="02">จุดที่ 2 โรงสูบน้ำดิบ</ion-select-option>
+        <ion-select-option value="03">จุดที่ 3 บ่อกรอง</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-card>
+    <div> 
+      <div id="chart_01" *ngIf="show01"></div> 
+      <div id="chart_02" *ngIf="show02"></div> 
+      <div id="chart_03" *ngIf="show03"></div> 
+    </div>
+    
+    <ion-card-header>
+      <ion-card-title>{{title}}</ion-card-title>
+      <ion-card-subtitle>{{description}}</ion-card-subtitle>
+    </ion-card-header> 
+  </ion-card>
+</ion-content>

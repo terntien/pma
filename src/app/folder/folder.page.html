@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="showmap" class="container" style="width:100% !important; height:100% !important;">
+    <capacitor-google-map #map style="width:100% !important; height:100% !important;"></capacitor-google-map>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">ปิด (Close)</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <p>
+            <img src="./assets/images/i0.jpg" alt="" *ngIf="showimage=='0'">
+            <img src="./assets/images/i1.jpg" alt="" *ngIf="showimage=='1'">
+            <img src="./assets/images/i2.jpg" alt="" *ngIf="showimage=='2'">
+          </p>
+          <div style="height:160px; border-bottom: 1px solid red;">
+
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+ 
+  <div *ngIf="showalert" class="container"> 
+    <!--
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="schedule">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>ตรวจจับระดับน้ำ</ion-label>
+          <ion-badge>6</ion-badge>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="speakers">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>ตรวจจับมนุษย์</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button tab="map">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>ข้อมูลการแจ้งเชิงพื้นที่</ion-label>
+        </ion-tab-button>
+     
+      </ion-tab-bar>
+    </ion-tabs>
+    -->
+  </div>
+
+</ion-content>

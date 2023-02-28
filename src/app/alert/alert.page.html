@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ข้อมูลการแจ้งเตือนเชิงพื้นที่</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-searchbar animated="true" placeholder="บ้านค่ายชัยภูมิ"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+    <ion-item detail="true" *ngFor="let item of alerts" (click)="showAlert('http://202.129.205.39:3000/detections/'+item?.image, 'แจ้งเตือนการตรวจจับบุคคล', 'พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ เมื่อเวลา '+item?.datetime)">
+      <ion-thumbnail slot="start">
+        <img alt="" [src]="'http://202.129.205.39:3000/detections/'+item.image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 style="font-size: 18px;">แจ้งเตือนการตรวจจับบุคคล</h3>
+        <p><ion-badge color="secondary">การประปาบ้านค่าย</ion-badge> จังหวัดชัยภูมิ, เวลา <ion-badge color="secondary">{{item.datetime}}</ion-badge></p>
+      </ion-label>
+    </ion-item>
+</ion-content>
