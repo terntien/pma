@@ -1,49 +1,107 @@
-<ion-header>
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>ข้อมูลการแจ้งเชิงพื้นที่</ion-title> 
-  </ion-toolbar>
-  <ion-toolbar color="secondary">
+<!-- <ion-toolbar color="secondary">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title>ข้อมูลการแจ้งเชิงพื้นที่</ion-title>
+</ion-toolbar> -->
+<!-- <ion-toolbar color="secondary">
     <ion-searchbar animated="true" placeholder="บ้านค่ายชัยภูมิ"></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+  </ion-toolbar> -->
 
-<ion-content>
-  <div id="container">
-    <capacitor-google-map #map style="width:100% !important; height:100% !important;"></capacitor-google-map>
-  </div>
-  
-  <ion-modal [isOpen]="isModalOpen" (willDismiss)="setOpen(false)">
+<div id="container" style="margin-top: 5em !important; ">
+  <capacitor-google-map #map style="width:100% !important; height:100% !important;"></capacitor-google-map>
+</div>
+
+<!-- 
+<ion-modal [isOpen]="isModalOpen">
+  <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
     <ng-template>
       <ion-header>
-        <ion-toolbar color="secondary">
-          <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="setOpen(false)">ปิด (x)</ion-button>
+            <ion-button (click)="setOpen(false)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content class="ion-padding" *ngIf="show">
-        <img alt="" [src]=image /> 
-        <ion-item>
-          <ion-icon name="home" slot=""start></ion-icon>
-          &nbsp; {{marker?.title}}  &nbsp;&nbsp; 
-        </ion-item>
-        <ion-item>
-          <ion-icon name="location" slot=""start></ion-icon>
-          &nbsp; {{marker?.latitude}}, {{marker?.longitude}}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="warning" slot=""start></ion-icon>
-          &nbsp; ระดับน้ำ {{level}}%
-        </ion-item>
-        <ion-item>
-          <ion-icon name="calendar-outline"></ion-icon>
-          &nbsp; {{showdate}}
-        </ion-item>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Connor Smith</h2>
+              <p>Sales Rep</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Daniel Smith</h2>
+              <p>Product Designer</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Greg Smith</h2>
+              <p>Director of Operations</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Zoey Smith</h2>
+              <p>CEO</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ng-template>
   </ion-modal>
-</ion-content>
+</ion-modal> -->
+
+<ion-modal [isOpen]="isModalOpen" (willDismiss)="setOpen(false)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="none">
+        <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">x</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding" *ngIf="show">
+      <div id="content-modal">
+        <div class="image-modal">
+          <img alt="" [src]=image />
+        </div>
+        <div class="detail-modal">
+          <ion-item>
+            <ion-icon name="home" slot="" start></ion-icon>
+            &nbsp; {{marker?.title}} &nbsp;&nbsp;
+          </ion-item>
+          <ion-item>
+            <ion-icon name="location" slot="" start></ion-icon>
+            &nbsp; {{marker?.latitude}}, {{marker?.longitude}}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="warning" slot="" start></ion-icon>
+            &nbsp; ระดับน้ำ {{level}}%
+          </ion-item>
+          <ion-item>
+            <ion-icon name="calendar-outline"></ion-icon>
+            &nbsp; {{showdate}}
+          </ion-item>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

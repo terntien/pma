@@ -1,74 +1,112 @@
-<ion-header>
-  <ion-toolbar color="secondary"> 
+<!-- <div>
+  <ion-toolbar style="margin-top: 3.5em;">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
+  
   </ion-toolbar>
-</ion-header>
+</div> -->
 
-<ion-content>  
-  <ion-card style="padding:10px;">
-    <div id="chart_{{id}}"></div> 
-  </ion-card>
-  <ion-card>
-    <!--
-    <img *ngIf="image" alt="" [src]=image/>
-    -->
+<div style="overflow: auto; padding-bottom: 5em;">
+  <h1 style="margin: 2em; margin-top: 5em;">รายละเอียดจุดตรวจวัด</h1>
+  <div class="col-md-8 col-xs-12" id="content-sitelevel" style="margin-bottom">
+
     <ion-card-header>
-      <ion-card-title style="font-size: 20px;">{{title}}</ion-card-title>
+      <ion-card-title style="font-size: 24px;">{{title}}</ion-card-title>
       <ion-card-subtitle>{{title}} การประปาบ้านค่าย จังหวัดชัยภูมิ</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content> 
-      <ion-list>
-      <ion-item *ngFor="let item of showall">
-        <ion-thumbnail slot="start" (click)="showdetail(item)" class="hidesm">
-          <img *ngIf="item.image" alt="" src="http://202.129.205.39:3000{{item.image}}" />
-        </ion-thumbnail>
-        <ion-label>
-          <h3 style="font-size: 18px;" (click)="showdetail(item)">ข้อมูลระดับน้ำ "{{title}}"</h3>
-          <p>ตรวจวัดเมื่อ <ion-badge color="secondary">{{item.datetime}}</ion-badge></p>
-          <p>ณ พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
-        </ion-label>
-        <ion-label slot="end">
-          <ion-badge color="success" (click)="showdetail(item)"><h3 style="font-size: 18px;">{{item.percent| number : '1.2-2'}}% </h3> </ion-badge>
-        </ion-label>
-      </ion-item> 
-      </ion-list> 
-    </ion-card-content>
-  </ion-card>
 
-  
-  <ion-modal [isOpen]="isModalOpen" (willDismiss)="setOpen(false)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar color="secondary">
-          <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="setOpen(false)">ปิด (x)</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <img alt="" [src]=modalimage /> 
-        <ion-item>
-          <ion-icon name="home" slot=""start></ion-icon>
-          &nbsp; {{title}}  &nbsp;&nbsp; 
-        </ion-item>
-        <ion-item>
-          <ion-icon name="location" slot=""start></ion-icon>
-          &nbsp; พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ
-        </ion-item>
-        <ion-item>
-          <ion-icon name="warning" slot=""start></ion-icon>
-          &nbsp; ระดับน้ำ {{level}}%
-        </ion-item>
-        <ion-item>
-          <ion-icon name="calendar-outline"></ion-icon>
-          &nbsp; {{showdate}}
-        </ion-item>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-</ion-content>
+    <ion-card style="padding:10px;">
+      <div id="chart_{{id}}"></div>
+      <!-- <chart type="line" [data]="data" [options]="options" style="width: 100%"></chart> -->
+    </ion-card>
+
+    <ion-card>
+      <!--
+    <img *ngIf="image" alt="" [src]=image/>
+    -->
+
+      <!-- <ion-list>
+          <ion-item *ngFor="let item of showall">
+            <ion-thumbnail slot="start" (click)="showdetail(item)" class="hidesm">
+              <img *ngIf="item.image" alt="" src="http://202.129.205.39:3000{{item.image}}" />
+            </ion-thumbnail>
+            <ion-label>
+              <h3 style="font-size: 18px;" (click)="showdetail(item)">{{item.datetime}}"</h3>
+              <p>ตรวจวัดเมื่อ <ion-badge color="secondary">{{item.datetime}}</ion-badge></p>
+              <p>ณ พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
+            </ion-label>
+            <ion-label>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style='width:{{item.percent| number}}%;'
+                  aria-valuenow="{{item.percent| number : '1.2-2'}}" aria-valuemin="0" aria-valuemax="100">
+                  {{item.percent|
+                  number : '1.2-2'}}%
+                </div>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list> -->
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- <th scope="col">ลำดับ</th> -->
+            <th scope="col">วันที่</th>
+            <th scope="col">รูปภาพ</th>
+            <th scope="col">พื้นที่</th>
+            <th scope="col" style="width: 40vh;">ระดับน้ำ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of showall">
+            <!-- <th scope="row">{{1+1}}</th> -->
+            <td>{{item.datetime}}</td>
+            <td> <img *ngIf="image" alt="" [src]=image /></td>
+            <td>ณ พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ</td>
+            <td style="">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style='width:{{item.percent| number}}%;'
+                  aria-valuenow="{{item.percent| number : '1.2-2'}}" aria-valuemin="0" aria-valuemax="100">
+                  {{item.percent|number : '1.2-2'}}%
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card>
+
+
+    <ion-modal [isOpen]="isModalOpen" (willDismiss)="setOpen(false)">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="secondary">
+            <ion-title>รายละเอียดจุดตรวจวัด</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">ปิด (x)</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <img alt="" [src]=modalimage />
+          <ion-item>
+            <ion-icon name="home" slot="" start></ion-icon>
+            &nbsp; {{title}} &nbsp;&nbsp;
+          </ion-item>
+          <ion-item>
+            <ion-icon name="location" slot="" start></ion-icon>
+            &nbsp; พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ
+          </ion-item>
+          <ion-item>
+            <ion-icon name="warning" slot="" start></ion-icon>
+            &nbsp; ระดับน้ำ {{level}}%
+          </ion-item>
+          <ion-item>
+            <ion-icon name="calendar-outline"></ion-icon>
+            &nbsp; {{showdate}}
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+</div>

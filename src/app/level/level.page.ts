@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as t from 'apexcharts'; 
+import * as t from 'apexcharts';
 export type ChartOptions = {
   chart: ApexChart;
   series: ApexNonAxisChartSeries | any[];
@@ -12,24 +12,24 @@ export type ChartOptions = {
 })
 
 export class LevelPage implements OnInit {
-  public options: Partial<ChartOptions>; 
-  constructor() { 
+  public options: Partial<ChartOptions>;
+  constructor() {
     //this.spackline();
   }
 
   ngOnInit() {
-    
-  } 
-  ionViewDidEnter(){
+
+  }
+  ionViewDidEnter() {
     //this.width='100%';
-  } 
-  showchart(){ 
+  }
+  showchart() {
     this.options = {
       chart: {
-        type: 'area', 
-        height: 350,  
+        type: 'area',
+        height: 350,
       },
-      series:[{
+      series: [{
         data: [12, 14, 2, 47]
       }]
     }

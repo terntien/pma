@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -10,14 +10,39 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
-    <ion-item detail="true" *ngFor="let item of alerts" (click)="showAlert('http://202.129.205.39:3000/detections/'+item?.image, 'แจ้งเตือนการตรวจจับบุคคล', 'พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ เมื่อเวลา '+item?.datetime)">
-      <ion-thumbnail slot="start">
-        <img alt="" [src]="'http://202.129.205.39:3000/detections/'+item.image" />
-      </ion-thumbnail>
-      <ion-label>
-        <h3 style="font-size: 18px;">แจ้งเตือนการตรวจจับบุคคล</h3>
-        <p><ion-badge color="secondary">การประปาบ้านค่าย</ion-badge> จังหวัดชัยภูมิ, เวลา <ion-badge color="secondary">{{item.datetime}}</ion-badge></p>
-      </ion-label>
-    </ion-item>
-</ion-content>
+<ion-content>
+  <ion-item detail="true" *ngFor="let item of alerts"
+    (click)="showAlert('http://202.129.205.39:3000/detections/'+item?.image, 'แจ้งเตือนการตรวจจับบุคคล', 'พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ เมื่อเวลา '+item?.datetime)">
+    <ion-thumbnail slot="start">
+      <img alt="" [src]="'http://202.129.205.39:3000/detections/'+item.image" />
+    </ion-thumbnail>
+    <ion-label>
+      <h3 style="font-size: 18px;">แจ้งเตือนการตรวจจับบุคคล</h3>
+      <p><ion-badge color="secondary">การประปาบ้านค่าย</ion-badge> จังหวัดชัยภูมิ, เวลา <ion-badge
+          color="secondary">{{item.datetime}}</ion-badge></p>
+    </ion-label>
+  </ion-item>
+</ion-content> -->
+<icon-content class="content " style=" margin: auto; width: 65%;">
+  <ion-accordion-group style="margin-top: 5rem;">
+    <ion-accordion *ngFor="let item of alerts">
+      (click)="showAlert('http://202.129.205.39:3000/detections/'+item?.image, 'แจ้งเตือนการตรวจจับบุคคล',
+      'พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ เมื่อเวลา '+item?.datetime)"
+      <ion-item slot="header" color="light">
+        <ion-label>
+          <h3 style="font-size: 18px;">แจ้งเตือนการตรวจจับบุคคล</h3>
+          <p>
+            <span color="none">การประปาบ้านค่าย</span> จังหวัดชัยภูมิ,
+            เวลา <ion-badge color="secondary">{{item.datetime}}</ion-badge>
+          </p>
+        </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <h3>แจ้งเตือนการตรวจจับบุคคล</h3>
+        <img alt="" [src]="'http://202.129.205.39:3000/detections/'+item.image" style="width: 400px;" />
+        <p style="margin-top:1em;">พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
+        <ion-badge color="warning">{{item.datetime}}</ion-badge>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</icon-content>
