@@ -124,7 +124,7 @@
 
 .dropdown-menu.show {
   background: #ffffff;
-  margin-right: 5em;
+  // margin-right: 5em;
 }
 
 a.dropdown-item {
@@ -149,4 +149,14 @@ div#content-modal {
     -webkit-box-flex: 0;
     margin: auto !important;
   }
+}
+
+.dropdown-menu-right {
+  overflow: auto;
+  height: 28em;
+  width: 25em;
+}
+
+.dropdown-menu-right .item-alert {
+  border-bottom: 1px #000000;
 }

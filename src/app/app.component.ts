@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -9,15 +10,23 @@ export class AppComponent {
     { title: 'ตำแหน่งจุดตรวจวัด', url: '/location', },//icon: 'map'
     // { title: 'ปริมาณน้ำรายวัน', url: '/level', icon: 'analytics' },
     { title: 'ปริมาณน้ำรายสัปดาห์', url: '/weekly', }, //icon: 'bar-chart' 
-    { title: 'ข้อมูลการแจ้งเตือน', url: '/alert', icon: 'warning' },//
+    // { title: 'ข้อมูลการแจ้งเตือน', url: '/alert', icon: 'warning' },//
   ];
 
   public subMenu = [
-    { title: 'จุดที่ 1: บ่อพักน้ำดิบ', url: '/sitelevel/01' },
-    { title: 'จุดที่ 2: โรงสูบน้ำดิบ', url: '/sitelevel/02' },
-    { title: 'จุดที่ 3: บ่อกรอง', url: '/sitelevel/03' }
+    { title: 'จุดที่ 1 บ่อพักน้ำดิบ', url: '/sitelevel/01' },
+    { title: 'จุดที่ 2 โรงสูบน้ำดิบ', url: '/sitelevel/02' },
+    { title: 'จุดที่ 3 บ่อกรอง', url: '/sitelevel/03' }
   ];
 
+  alerts: any = [];
+  constructor(private modalCtrl: ModalController) {
+    fetch('http://202.129.205.39:3000/api/water/getperson').then(res => res.json()).then(json => {
+      this.alerts = json?.person;
+      console.log(this.alerts);
+    });
+  }
+
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() { }
+  // constructor() { }
 }
