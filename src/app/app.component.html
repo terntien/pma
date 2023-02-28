@@ -36,6 +36,9 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-right">
+      <li class="nav-item active" *ngFor="let p of appPages; let i = index">
+        <a class="nav-link" href="poc" [routerLink]="[p.url]">{{ p.title }} </a>
+      </li>
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="/level" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">ปริมาณน้ำรายวัน</a>
@@ -44,9 +47,7 @@
             {{o.title }}</a>
         </div>
       </li>
-      <li class="nav-item active" *ngFor="let p of appPages; let i = index">
-        <a class="nav-link" href="poc" [routerLink]="[p.url]">{{ p.title }} </a>
-      </li>
+
       <!-- <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="/#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
@@ -74,7 +75,7 @@
             <!-- <b>แจ้งเตือนการตรวจจับบุคคล</b> -->
             <!-- <img alt="" [src]="'http://202.129.205.39:3000/detections/'+item.image" style="width: 400px;" /> -->
             <p>พื้นที่การประปาบ้านค่าย จังหวัดชัยภูมิ</p>
-            <ion-badge color="warning">{{o.datetime}}</ion-badge>
+            <ion-badge color="warning">{{datetime}}</ion-badge>
           </a>
         </div>
       </li>
